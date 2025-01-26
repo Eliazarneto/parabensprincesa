@@ -24,7 +24,7 @@
             position: relative;
             opacity: 0;
             transform: translateY(-50px);
-            animation: headerPulse 10s infinite; /* Animação de pulsar lenta */
+            animation: headerPulse 10s infinite;
             transition: opacity 1s ease, transform 1s ease;
         }
 
@@ -37,116 +37,6 @@
             font-size: 20px;
         }
 
-        .carousel {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(-50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .carousel img {
-            width: 100%;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: opacity 1s ease;
-        }
-
-        .carousel img.active {
-            opacity: 1;
-            position: static;
-        }
-
-        .carousel button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            color: black;
-            font-size: 20px;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .carousel button.prev {
-            left: 10px;
-        }
-
-        .carousel button.next {
-            right: 10px;
-        }
-
-        .text {
-            margin: 20px;
-            font-size: 23px;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(-50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .countdown {
-            font-size: 26px;
-            font-weight: bold;
-            margin-top: 20px;
-            background: #ff4d4d;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            position: relative;
-            opacity: 0;
-            transform: scale(0.5);
-            animation: pulse 10s infinite; /* Animação ajustada para o contador */
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .countdown::after {
-            content: '❤️';
-            font-size: 18px;
-            position: absolute;
-            top: -10px;
-            right: 10px;
-        }
-
-        @keyframes headerPulse {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(0) scale(1.1);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                font-size: 24px;
-                padding: 15px;
-            }
-
-            .text {
-                font-size: 18px;
-            }
-
-            .countdown {
-                font-size: 22px;
-            }
-        }
-
         .player {
             margin: 20px auto;
             padding: 15px;
@@ -157,6 +47,9 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .controls {
@@ -202,6 +95,130 @@
         #currentTime, #duration {
             font-size: 14px;
         }
+
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            color: black;
+            font-size: 20px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .carousel button.prev {
+            left: 10px;
+        }
+
+        .carousel button.next {
+            right: 10px;
+        }
+
+        .text {
+            margin: 20px;
+            font-size: 23px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .countdown {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #ff4d4d;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .countdown p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            color: #ff4d4d;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            min-width: 80px;
+        }
+
+        .countdown-block span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .countdown-block .label {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        @keyframes headerPulse {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(0) scale(1.1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                font-size: 24px;
+                padding: 15px;
+            }
+
+            .text {
+                font-size: 18px;
+            }
+
+            .countdown {
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,7 +226,7 @@
         Feliz aniversário, Minha Princesa ❤️
     </header>
 
-    <div class="player">
+    <div class="player" id="player">
         <audio id="audioPlayer" src="Iframe Photograph - loving can hurt sometimes ed sheeran lyrics [-rgtr9M1dUA].mp3"></audio>
         <div class="controls">
             <button id="playPause" class="play-btn">▶</button>
@@ -217,6 +234,52 @@
                 <div class="progress-bar" id="progressBar"></div>
             </div>
             <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <div class="carousel" id="carousel">
+        <img src="IMG11.JPG" alt="Foto 1" class="active">
+        <img src="IMG22.JPG" alt="Foto 2">
+        <img src="IMG33.JPG" alt="Foto 3">
+        <img src="IMG1.JPG" alt="Foto 4">
+        <img src="IMG2.JPG" alt="Foto 5">
+        <img src="IMG3.JPG" alt="Foto 6">
+        <img src="IMG4.JPG" alt="Foto 7">
+        <img src="IMG5.JPG" alt="Foto 8">
+        <img src="IMG6.jpg" alt="Foto 9">
+        <img src="IMG7.JPG" alt="Foto 10">
+        <button class="prev">&#9664;</button>
+        <button class="next">&#9654;</button>
+    </div>
+
+    <div class="text" id="text">
+        <p>Hoje é o seu dia, e eu quero aproveitar cada segundo para te lembrar o quanto você é especial para mim. Desde o momento em que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais felicidade. Você é a pessoa que me faz sorrir nos dias mais difíceis, que me motiva a ser alguém melhor, e que transforma as coisas simples em momentos únicos.</p>
+        <p>Nossa jornada juntos tem sido incrível. Já vivemos momentos inesquecíveis, muitos risos e conquistas. E, sim, também enfrentamos alguns altos e baixos – mas acredito que são esses desafios que tornam nossa história ainda mais forte e verdadeira. É nos dias difíceis que percebo o quanto te amo e como sou grato por ter você ao meu lado, porque você é a pessoa com quem quero compartilhar tudo, seja bom ou não.</p>
+        <p>Você é mais do que eu sonhei. Seu jeito de ser, sua força, sua alegria e até os pequenos detalhes que só você tem me encantam todos os dias. Cada momento ao seu lado é um presente, e eu não poderia ser mais feliz por compartilhar a vida com você.</p>
+        <p>Hoje, o dia é todo seu, mas eu sou quem se sente sortudo por te ter na minha vida. Que seu aniversário seja tão maravilhoso quanto você, cheio de amor, alegria e momentos que façam seu coração transbordar de felicidade.</p>
+        <p>Eu amo você mais do que palavras podem expressar, e desejo que possamos comemorar muitos e muitos aniversários juntos, sempre com amor, cumplicidade e respeito.</p>
+        <p>Feliz aniversário, minha princesa!</p>
+    </div>
+
+    <div class="countdown" id="countdown">
+        <p>Estamos juntos há:</p>
+        <div class="countdown-container">
+            <div class="countdown-block">
+                <span id="days">0</span>
+                <span class="label">Dias</span>
+            </div>
+            <div class="countdown-block">
+                <span id="hours">0</span>
+                <span class="label">Horas</span>
+            </div>
+            <div class="countdown-block">
+                <span id="minutes">0</span>
+                <span class="label">Minutos</span>
+            </div>
+            <div class="countdown-block">
+                <span id="seconds">0</span>
+                <span class="label">Segundos</span>
+            </div>
         </div>
     </div>
 
@@ -252,45 +315,10 @@
             const remainingSeconds = Math.floor(seconds % 60);
             return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
         }
-    </script>
 
-
-
-
-
-
-
-
-    <div class="carousel" id="carousel">
-        <img src="IMG11.JPG" alt="Foto 1" class="active">
-        <img src="IMG22.JPG" alt="Foto 2">
-        <img src="IMG33.JPG" alt="Foto 3">
-        <img src="IMG1.JPG" alt="Foto 4">
-        <img src="IMG2.JPG" alt="Foto 5">
-        <img src="IMG3.JPG" alt="Foto 6">
-        <img src="IMG4.JPG" alt="Foto 7">
-        <img src="IMG5.JPG" alt="Foto 8">
-        <img src="IMG6.jpg" alt="Foto 9">
-        <img src="IMG7.JPG" alt="Foto 10">
-        <button class="prev">&#9664;</button>
-        <button class="next">&#9654;</button>
-    </div>
-
-    <div class="text" id="text">
-        <p>Hoje é o seu dia, e eu quero aproveitar cada segundo para te lembrar o quanto você é especial para mim. Desde o momento em que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais felicidade. Você é a pessoa que me faz sorrir nos dias mais difíceis, que me motiva a ser alguém melhor, e que transforma as coisas simples em momentos únicos.</p>
-        <p>Nossa jornada juntos tem sido incrível. Já vivemos momentos inesquecíveis, muitos risos e conquistas. E, sim, também enfrentamos alguns altos e baixos – mas acredito que são esses desafios que tornam nossa história ainda mais forte e verdadeira. É nos dias difíceis que percebo o quanto te amo e como sou grato por ter você ao meu lado, porque você é a pessoa com quem quero compartilhar tudo, seja bom ou não.</p>
-        <p>Você é mais do que eu sonhei. Seu jeito de ser, sua força, sua alegria e até os pequenos detalhes que só você tem me encantam todos os dias. Cada momento ao seu lado é um presente, e eu não poderia ser mais feliz por compartilhar a vida com você.</p>
-        <p>Hoje, o dia é todo seu, mas eu sou quem se sente sortudo por te ter na minha vida. Que seu aniversário seja tão maravilhoso quanto você, cheio de amor, alegria e momentos que façam seu coração transbordar de felicidade.</p>
-        <p>Eu amo você mais do que palavras podem expressar, e desejo que possamos comemorar muitos e muitos aniversários juntos, sempre com amor, cumplicidade e respeito.</p>
-        <p>Feliz aniversário, minha princesa!</p>
-    </div>
-
-    <div class="countdown" id="countdown"></div>
-
-    <script>
-        // Mostrar os elementos sequencialmente
         function showElements() {
             const header = document.getElementById('header');
+            const player = document.getElementById('player');
             const carousel = document.getElementById('carousel');
             const text = document.getElementById('text');
             const countdown = document.getElementById('countdown');
@@ -301,22 +329,51 @@
             }, 500);
 
             setTimeout(() => {
+                player.style.opacity = 1;
+                player.style.transform = 'translateY(0)';
+            }, 1500);
+
+            setTimeout(() => {
                 carousel.style.opacity = 1;
                 carousel.style.transform = 'translateY(0)';
-            }, 1500);
+            }, 2500);
 
             setTimeout(() => {
                 text.style.opacity = 1;
                 text.style.transform = 'translateY(0)';
-            }, 2500);
+            }, 3500);
 
             setTimeout(() => {
                 countdown.style.opacity = 1;
-                countdown.style.transform = 'scale(1)';
-            }, 3500);
+                countdown.style.transform = 'translateY(0)';
+            }, 4500);
         }
 
-        // Configurar o carrossel
+        function startCountdown(startDate) {
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+
+            function updateCountdown() {
+                const now = new Date();
+                const elapsed = now - startDate;
+
+                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+                const seconds = Math.floor((elapsed / 1000) % 60);
+
+                daysElement.textContent = days;
+                hoursElement.textContent = hours;
+                minutesElement.textContent = minutes;
+                secondsElement.textContent = seconds;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
         const carouselImages = document.querySelectorAll('.carousel img');
         const prevButton = document.querySelector('.carousel .prev');
         const nextButton = document.querySelector('.carousel .next');
@@ -341,28 +398,9 @@
             updateCarousel();
         });
 
-        // Iniciar cronômetro
-        function startCountdown(startDate) {
-            const countdownElement = document.getElementById('countdown');
-
-            function updateCountdown() {
-                const now = new Date();
-                const elapsed = now - startDate;
-                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
-                const seconds = Math.floor((elapsed / 1000) % 60);
-                countdownElement.textContent = `Estamos juntos há: ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        }
-
-        // Configuração inicial
         window.onload = () => {
             showElements();
-            const startDate = new Date(2024, 7, 26); // Setembro é mês 8
+            const startDate = new Date(2024, 7, 26);
             startCountdown(startDate);
         };
     </script>
